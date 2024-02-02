@@ -1,0 +1,354 @@
+/* Base Styles */
+
+:root {
+    font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #fafafa;
+    color: #262626;
+    padding-bottom: 3rem;                  /* Starter Code */
+}
+
+img {
+    display: block;                        /* Displays Images as Blocks */
+}
+
+.container {                               /* Container class */
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.btn {
+    display: inline-block;                 /* Button changes when clicked on */
+    font: inherit;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: 0.5rem auto #4d90fe        /* Button has a blue outline when clicked on */
+}
+
+.visually-hidden {                        
+    position: absolute !important;        /* shows more value */
+    height: 1px;
+    width: 1px;
+    overflow: hidden;                     /* clip property does not work if "overflow: visible" */
+    clip: rect(1px, 1px, 1px, 1px);       
+}
+
+/* PROFILE SECTION */
+
+.profile {
+    padding: 5rem 0;
+}
+
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.profile-image {
+    float: left;                            /* makes profile float on left side of the screen */
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;                /* moves to center of content */
+    align-items: center;                    /* aligns items to the center */
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;                     /* makes profile image round by 50% */
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+    float: left;                            
+    width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+    margin-top: 1.1rem;
+}
+
+.profile-user-name {
+    display: inline-block;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+
+.profile-edit-btn {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 2.5rem;  
+    margin-left: 2rem;
+}
+
+.profile-settings-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.profile-stats li {
+display: inline-block;
+font-size: 1.6rem;
+line-height: 1.5;
+margin-right: 4rem;
+cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+.profile-bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600;
+}
+
+/* GALLERY SECTION */
+
+.gallery {
+    display: flex;               /* flex - shorthand of flex-grow, flex-shrink, flex-basis */
+    flex-wrap: wrap;             /* wraps up flex items - images */
+    margin: -1rem -1rem;
+    padding-bottom: 3rem;
+}
+.gallery-item {
+    position: relative;
+    flex: 1 0 22rem;
+    margin: 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {    /* when hovering over the images on broswer the comments and heart will show */
+    display: flex;
+    justify-content: center;                /* centers gallery info */
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0. 0. 0.3);
+}
+
+.gallery-item-info {
+    display: none;                /* heart and comment won't be on display until hovering over images */
+}
+
+.gallery-item-info li {
+    display: inline-block;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.gallery-item-likes {
+    margin-right: 2.2rem;
+}
+
+.gallery-item-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0. 0. 0.1);
+}
+
+.fa-clone,
+.fa-comment {
+    transform: rotateY(180deg);         /* rotates on a y axis */
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* LOADER */
+
+.loader {                                   /* loading */
+    width: 5rem;
+    height: 5rem;
+    border: 0.6rem solid #999;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: loader 500ms linear infinite;
+}
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 40rem) {
+    .profile {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4rem 0;
+    }
+
+    .profile::after {
+        display: none;
+    }
+    
+    .profile-image,
+    .profile-user-settings,
+    .profile-bio,
+    .profile-stats {
+        float: none;
+        width: auto;
+    }
+    .profile-image img {
+        width: 7.7rem;
+    }
+    
+    .profile-user-settings {
+        flex-basis: calc(100% - 10.7rem);
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    
+    .profile-user-name {
+        font-size: 2.2rem;
+    }
+    
+    .profile-edit-btn {
+        order: 1;
+        padding: 0;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .profile-edit-btn {
+        margin-left: 0;
+    }
+    
+    .profile-bio {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
+    
+    .profile-edit-btn,
+    .profile-bio,
+    .profile-stats {
+        flex-basis: 100%;                /* set to 100% regardless of size */
+    }
+    
+    .profile-stats {
+        order: 1;
+        margin-top: 1,5rem;
+    }
+    
+    .profile-stats ul {
+        display: flex;
+        text-align: center;
+        padding: 1.2rem 0;
+        border-top: 0.1rem solid #dadada;
+        border-bottom: 0,1rem solid #dadada;
+    }
+    
+    .profile-stats li {
+        font-size: 1.4rem;
+        flex: 1;                     /* takes up half of space */    
+        margin: 0;
+    }
+    
+    .profile-stats-count {
+        display: block;
+    }
+}
+
+/* SPINNER ANIMATION */
+
+@keyframes loader {                  /* animation for the loader to spin around */
+    to{ 
+        transform: rotate(360deg);   /* rotates all around */
+    }
+}
+
+@supports (display: grid) {                    /* @support has to be added otherwise @keyframes won't work */
+    .profile {
+        display: grid;                         /* will be displayed as grid */
+        grid-template-columns: 1fr 2fr;        /* set to 1 fraction root and 2 fraction root - makes grow and shrink according to fraction root */
+        grid-template-rows: repeat(3, auro);   /* three rows of images */
+        grid-column-gap: 3rem;                 /* amount of gap between columns */
+        align-items: center;
+    }
+    
+    .profile-image {
+        grid-row: 1 / -1;
+    }
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));  /* three rows will continue vertically the number of times it is necessary */
+        grid-gap: 2rem;                                               /* fits in screen minimun 22rem and max 1fr*/
+    }
+
+    .profile-image,
+    .profile-user-settings,
+    .profile-stats,
+    .profile-bio,
+    .gallery-item,
+    .gallery {
+        width: auto;
+        margin: 0;
+    }
+
+    @media (max-width: 40rem) {                 /* info from Grid course Scrimba */
+        .profile {
+            grid-template-columns: auto 1fr;    /* specifies grid columns */
+            grid-row-gap: 1.5rem;               /* gap between grids */
+        }
+
+        .profile-image {
+            grid-row: 1 / 2;
+        }
+        
+        .profile-user-settings {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 1rem;
+        }
+        
+        .profile-edit-btn,
+        .profile-stats,
+        .profile-bio {
+            grid-column: 1 / -1;    
+        }
+
+        .profile-user-settings,
+        .profile-edit-btn,
+        .profile-settings-btn,
+        .profile-bio,
+        .profile-stats {
+            margin: 0;             /* all these classes margin will be set to 0 */
+        }
+    }
+}
